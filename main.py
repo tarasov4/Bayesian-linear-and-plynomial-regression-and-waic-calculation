@@ -111,15 +111,15 @@ def Bayesian_polynom_regression(x:tf.Tensor,
     plt.tight_layout()
     plt.show()
     
-    if plot_best_fit:
+  if plot_best_fit:
 
-      x_val = tf.convert_to_tensor(np.linspace(tf.math.reduce_min(x), tf.math.reduce_max(x), 200), tf.float32)
-      y_pred=tf.matmul(tf.cast(tf.reshape(tf.math.reduce_mean(beta, axis=0), [1,-1]), tf.float32), tf.stack([x_val**pow for pow in range(beta.shape[1])]))
-      y_pred = tf.reshape(y_pred, [-1])
-      plt.scatter(x, y, label='observed')
-      plt.plot(x_val, y_pred, label='predicted')
-      plt.legend()
-      plt.show()
+    x_val = tf.convert_to_tensor(np.linspace(tf.math.reduce_min(x), tf.math.reduce_max(x), 200), tf.float32)
+    y_pred=tf.matmul(tf.cast(tf.reshape(tf.math.reduce_mean(beta, axis=0), [1,-1]), tf.float32), tf.stack([x_val**pow for pow in range(beta.shape[1])]))
+    y_pred = tf.reshape(y_pred, [-1])
+    plt.scatter(x, y, label='observed')
+    plt.plot(x_val, y_pred, label='predicted')
+    plt.legend()
+    plt.show()
  
   return dict(regression_parameters=beta, 
               mean_parameters_values=tf.math.reduce_mean(beta, axis=0),
