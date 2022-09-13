@@ -114,6 +114,7 @@ plt.plot(range(1, 8), elpd_waics)
 ![image](https://user-images.githubusercontent.com/93482551/189929009-69dc8b3f-4e47-4e6b-9e2e-4d92cbe43c03.png)
 ![image](https://user-images.githubusercontent.com/93482551/189929042-250a3165-2479-4d53-88da-b07a0841c730.png)
 ![image](https://user-images.githubusercontent.com/93482551/189929067-3d3e8081-f574-4a51-822a-d62fcb6457a7.png)
+![image](https://user-images.githubusercontent.com/93482551/189932146-9e9fc168-5162-4066-a99c-a066db050122.png)
 ![image](https://user-images.githubusercontent.com/93482551/189929133-f9f8c503-0717-42d3-b112-f2824d00cb34.png)
 ![image](https://user-images.githubusercontent.com/93482551/189929148-76b9c35a-9740-4637-b2b7-0c93c1abbf36.png)
 ![image](https://user-images.githubusercontent.com/93482551/189929181-2aa8216e-2eb0-4f10-9fce-b4969f4869c7.png)
@@ -134,7 +135,7 @@ elpd_waics
  
  So, the polynomial model of degree 4 is the best one for approximation the second group of the Anscombe's quartet.
  
- The loaded library:
+ The loaded libraries:
  ```
  import tensorflow as tf
 import tensorflow_probability as tfp
