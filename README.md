@@ -92,3 +92,55 @@ result
  'waic': {'elpd_waic': <tf.Tensor: shape=(), dtype=float32, numpy=56.543797>,
   'p_waic': <tf.Tensor: shape=(), dtype=float32, numpy=4.2208443>}}
   ```
+One can run estimation of several polynomial models with inreasing degree starting from 1 (linear model) than choose the best model on the basis of elpd WAIC value:
+
+```
+elpd_waics = []
+for i in range(1, 8):
+  result = Bayesian_polynom_regression(x_2_ans, 
+                                          y_2_ans, 
+                                          degree=i, 
+                                          num_steps=5000, 
+                                          num_bunrin_steps=1000, 
+                                          tune=1000, 
+                                          plot_posterior=False, 
+                                          plot_best_fit=True)
+  elpd_waics.append(result['waic']['elpd_waic'])
+
+
+plt.plot(range(1, 8), elpd_waics) 
+```
+![image](https://user-images.githubusercontent.com/93482551/189928332-02335976-5864-4aa8-ac05-0933e4dd143c.png)
+![image](https://user-images.githubusercontent.com/93482551/189929009-69dc8b3f-4e47-4e6b-9e2e-4d92cbe43c03.png)
+![image](https://user-images.githubusercontent.com/93482551/189929042-250a3165-2479-4d53-88da-b07a0841c730.png)
+![image](https://user-images.githubusercontent.com/93482551/189929067-3d3e8081-f574-4a51-822a-d62fcb6457a7.png)
+![image](https://user-images.githubusercontent.com/93482551/189929133-f9f8c503-0717-42d3-b112-f2824d00cb34.png)
+![image](https://user-images.githubusercontent.com/93482551/189929148-76b9c35a-9740-4637-b2b7-0c93c1abbf36.png)
+![image](https://user-images.githubusercontent.com/93482551/189929181-2aa8216e-2eb0-4f10-9fce-b4969f4869c7.png)
+
+```
+elpd_waics
+```
+
+```
+[<tf.Tensor: shape=(), dtype=float32, numpy=-15.294616>,
+ <tf.Tensor: shape=(), dtype=float32, numpy=56.897133>,
+ <tf.Tensor: shape=(), dtype=float32, numpy=56.882465>,
+ <tf.Tensor: shape=(), dtype=float32, numpy=57.133026>,
+ <tf.Tensor: shape=(), dtype=float32, numpy=56.17394>,
+ <tf.Tensor: shape=(), dtype=float32, numpy=-7.6088023>,
+ <tf.Tensor: shape=(), dtype=float32, numpy=-23.876358>]
+ ```
+ 
+ So, the polynomial model of degree 4 is the best one for approximation the second group of the Anscombe's quartet.
+ 
+ The loaded library:
+ ```
+ import tensorflow as tf
+import tensorflow_probability as tfp
+tfd = tfp.distributions
+tfb = tfp.bijectors
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+```
